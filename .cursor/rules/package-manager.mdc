@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+I am using uv for package manager 
+
+
+uv pip install -r requirements.txt
