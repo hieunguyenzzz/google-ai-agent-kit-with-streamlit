@@ -5,8 +5,6 @@ services:
     build:
       context: ./meraki-llm
       dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
     env_file:
       - ./meraki-llm/.env
     volumes:
@@ -19,9 +17,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8501:8501"
+    env_file:
+      - ./streamlit-chat/.env
     depends_on:
       - meraki-llm
-    # Environment variable to tell the streamlit app the hostname of the agent service
-    # Defaults to 'meraki-llm' in app.py if not set, but good practice to be explicit
-    environment:
-      - MERAKI_LLM_HOST=meraki-llm 
