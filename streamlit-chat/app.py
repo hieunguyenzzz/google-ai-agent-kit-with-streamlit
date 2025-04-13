@@ -2,14 +2,12 @@ import streamlit as st
 import requests
 import uuid
 import os
-import json
 
 # Get the meraki-llm service host from environment variable or default
 MERAKI_LLM_HOST = os.environ.get("MERAKI_LLM_HOST", "meraki-llm")
-MERAKI_LLM_PORT = 8000 # As defined in docker-compose.yml
 AGENT_APP_NAME = "agent" # Use the correct agent app name
-AGENT_RUN_URL = f"http://{MERAKI_LLM_HOST}:{MERAKI_LLM_PORT}/run"
-AGENT_SESSION_URL_TEMPLATE = f"http://{MERAKI_LLM_HOST}:{MERAKI_LLM_PORT}/apps/{AGENT_APP_NAME}/users/{{user_id}}/sessions/{{session_id}}"
+AGENT_RUN_URL = f"http://{MERAKI_LLM_HOST}/run"
+AGENT_SESSION_URL_TEMPLATE = f"http://{MERAKI_LLM_HOST}/apps/{AGENT_APP_NAME}/users/{{user_id}}/sessions/{{session_id}}"
 
 # Function to initialize the agent session
 def initialize_session(user_id, session_id):
